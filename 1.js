@@ -13,6 +13,6 @@ function printHelp() {
 
 if (!name || args.help) {
   printHelp();
-  process.exit();
+  process.exit(1);
 }
 console.log("Hello " + name);
