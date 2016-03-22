@@ -16,6 +16,10 @@ if (args.help || !args.file) {
 
 var hello = require("./helloworld");
 
-var contents = hello.say(args.file);
-
-console.log(contents.toString());
+var contents = hello.say(args.file, function(err, contents) {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(contents.toString());
+  }
+});
