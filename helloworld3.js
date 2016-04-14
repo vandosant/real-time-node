@@ -3,9 +3,12 @@ function readFile(filename) {
     var stream = fs.createReadStream(filename);
     var content = "";
 
+    stream.pipe(fs.createWriteStream(filename+".backup"));
+
     stream.on("data", function(chunk) {
       content += chunk;
     })
+
     stream.on("end", function() {
       done(content);
     });
