@@ -6,10 +6,8 @@
 <body>
 	<h1>9.html</h1>
 	<p id="hello">Hello World</p>
-	<form action='' method='post' id='send'>
-		<input type="text" id='send-text'>
-		<input type="submit" value="Send">
-	</form>
+	<input type="text" id='send-text'>
+	<input type="submit" value="Send" id="send">
 	<p id="msg"></p>
 <script src="/socket.io/socket.io.js"></script>
 <script>
@@ -20,11 +18,10 @@ socket.on("connect", function() {
 socket.on("hello", function(d) {
 	document.getElementById("hello").innerHTML = "Hello World " + d.toString();
 })
-document.getElementById('send').addEventListener('submit', function(e, d) {
+document.getElementById('send').addEventListener('click', function(e, d) {
 	e.preventDefault();
 	var val = document.getElementById('send-text').value;
 	document.getElementById('send-text').value = "";
-  console.log('submit', e, d);
   socket.emit("send", {data: val })
 })
 socket.on("send", function(d) {
