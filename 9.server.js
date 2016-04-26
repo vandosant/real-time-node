@@ -45,7 +45,7 @@ function handleIO(socket) {
     clearInterval(interval)
   }
   function sendBack(data) {
-    socket.emit('send', {data: data['data'] })
+    socket.broadcast.emit('send', data)
   }
 }
 

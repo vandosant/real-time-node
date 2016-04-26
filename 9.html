@@ -21,11 +21,12 @@ socket.on("hello", function(d) {
 document.getElementById('send').addEventListener('click', function(e, d) {
 	e.preventDefault();
 	var val = document.getElementById('send-text').value;
+	document.getElementById("msg").innerHTML += val + "<br>";
 	document.getElementById('send-text').value = "";
   socket.emit("send", {data: val })
 })
 socket.on("send", function(d) {
-  document.getElementById("msg").innerHTML = d['data']
+	document.getElementById("msg").innerHTML += d['data'] + "<br>";
 })
 </script>
 </body>
